@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+   
+  
+    
+<div class="stopwatch">
+
+
+<h1 id="dispaly">00:00:00</h1>
+
+
+<div class="button">
+
+<img src="img/stop.png" alt="" onclick="stop()">
+<img src="img/start.png" alt="" onclick="start()">
+<img src="img/reset.png" alt="" onclick="reset()">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+let [seconds,minutes,hours]=[0,0,0,];
+let dispaly=document.getElementById('dispaly');
+let timer=null;
+
+
+
+function stopwatch(){
+
+    seconds++;
+    if(seconds==60){
+        seconds=0;
+        minutes++;
+        if(minutes==60){
+            minutes=0;
+            hours++;
+        }
+    }
+
+    let h=hours <10 ? "0" +hours:hours;
+    let m=minutes<10 ? "0" + minutes:minutes;
+    let s=seconds<10 ? "0" + seconds:seconds
+
+    dispaly.innerHTML=h+":"+m+":"+s+"";
+}
+
+
+
+function start(){
+    if(timer !==null){
+        clearInterval(timer);
+    }
+    timer = setInterval(stopwatch,1000);
+}
+
+
+
+
+function stop(){
+    clearInterval(timer);
+}
+
+
+function reset(){
+    clearInterval(timer);
+    [seconds,minutes,hours]=[0,0,0,];
+    dispaly.innerHTML="00:00:00";
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+     
+</body>
+</html>
